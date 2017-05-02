@@ -1,0 +1,90 @@
+<div id="github-wrapper">
+  <div class="container container-fixed">
+    <div class="columns">
+      <div class="column col-12">
+        <form ng-submit="github.getInfo()">
+          <input
+            id="user-input"
+            type="text"
+            class="form-input"
+            ng-model="github.what"
+            placeholder="Type the username!"
+            autocomplete="off"
+            no-validate
+            autofocus />
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="container container-fixed">
+    <div class="user-content-holder">
+      <div class="loader" ng-if="github.loading">
+        <p class="text-center">
+          <span class="spinner"></span>
+          Loading info
+        </p>
+      </div>
+      <div class="user" ng-if="github.info.user && !github.loading">
+        <div class="container">
+          <div class="columns">
+            <div class="column col-4 user-info">
+              <div class="user-info-content">
+                <div class="user-profile-image">
+                  <img ng-src="{{ github.info.user.avatar_url }}" alt="{{ github.info.user.name }}" />
+                </div>
+                <div class="user-profile-info">
+                  <div class="user-profile-title">
+                    <h3 class="username">{{ github.info.user.name }}</h3>
+                    <h6>@{{ github.info.user.login }}</h6>
+                    <p class="bio">{{ github.info.user.bio }}</p>
+                    <p class="location">{{ github.info.user.location }}</p>
+                    <p ng-if="github.info.blog">
+                      <a href="#" target="_blank">{{ github.info.user.blog }}</a>
+                    </p>
+                  </div>
+                  <div class="user-profile-stats">
+                    <div class="repos">
+                      <span>{{ github.info.user.public_repos }}</span>
+                      <strong>Repositories</strong>
+                    </div>
+                    <div class="followers">
+                      <span>{{ github.info.user.followers }}</span>
+                      <strong>Followers</strong>
+                    </div>
+                    <div class="following">
+                      <span>{{ github.info.user.following }}</span>
+                      <strong>Following</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column col-8 user-repos" ng-if="github.info.repos.length">
+              <div class="user-repos-content">
+                <div class="panel">
+                  <div class="panel-header">
+                    <div class="panel-title">
+                      <span class="ion ion-ios-medical"></span>
+                      Top Repositories
+                    </div>
+                  </div>
+                  <div class="panel-body">
+                    <div class="tile" ng-repeat="repo in github.info.repos">
+                      <div class="tile-content">
+                        <p class="tile-title">{{ ::repo.name }}</p>
+                        <p class="tile-subtitle">{{ ::repo.description || 'NA' }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel-footer">
+                    <a target="_blank" href="{{ github.info.user.html_url }}" class="btn btn-primary">View Github Profile</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

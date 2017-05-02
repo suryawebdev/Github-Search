@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="#">
+  <meta charset="UTF-8">
+  <title>Github Repo Browser</title>
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css@0.2.10/dist/spectre.min.css" />
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@3.5.2/animate.min.css">
+  <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body ng-cloak>
+  <div id="app">
+    <header class="header">
+      <div class="container">
+        <nav class="navbar">
+          <section class="navbar-primary">
+            <a href="#" class="navbar-brand mr-10">
+              <span class="ion ion-social-octocat"></span>
+              <span>Github Repo Browser</span>
+            </a>
+          </section>
+          <section class="navbar-section">
+            <a href="https://github.com/picturepan2/spectre" class="btn btn-primary">GitHub</a>
+          </section>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <github-browser></github-browser>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/angular@1.6.3/angular.min.js"></script>
+  <script src="https://unpkg.com/angular-animate@1.6.3/angular-animate.min.js"></script>
+
+  <script src="/scripts/github.js"></script>
+  <script src="/scripts/app.js"></script>
+</body>
+</html>
